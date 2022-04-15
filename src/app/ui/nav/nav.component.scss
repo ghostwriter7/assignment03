@@ -1,0 +1,45 @@
+.nav {
+  &__brand {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    mat-icon {
+      margin-right: .5rem;
+    }
+
+    &.highlight {
+      border-bottom: 2px solid gold;
+
+      mat-icon {
+        color: gold;
+      }
+    }
+  }
+
+  &__spacer {
+    flex: 1 1 auto;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+
+    mat-icon {
+      margin-right: .5rem;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+
+    &.active {
+      mat-icon {
+        text-decoration: none;
+        color: gold;
+      }
+    }
+  }
+}

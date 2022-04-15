@@ -1,1 +1,13 @@
-<p>nav works!</p>
+<mat-toolbar class="nav">
+  <div class="nav__brand" routerLinkActive="highlight" routerLink="/schemes/list">
+    <mat-icon>code</mat-icon>
+    <span>Assignment App</span>
+  </div>
+  <span class="nav__spacer"></span>
+  <a class="nav__link" routerLinkActive="active" routerLink="/schemes/list">
+    <mat-icon>table_chart</mat-icon> Schemes
+  </a>
+  <a class="nav__link" routerLinkActive="active" routerLink="/schemes/add">
+    <mat-icon>library_add</mat-icon> Add scheme
+  </a>
+</mat-toolbar>
