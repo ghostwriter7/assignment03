@@ -5,6 +5,8 @@ import { AddEditSchemeComponent } from './add-edit-scheme/add-edit-scheme.compon
 import { SchemesRoutingModule } from './schemes-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -17,7 +19,9 @@ import { MatSortModule } from '@angular/material/sort';
     CommonModule,
     SchemesRoutingModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule,
+    MatButtonModule
   ]
 })
 export class SchemesModule { }
