@@ -4,14 +4,14 @@ import { User } from 'firebase/auth';
 
 export interface IAuthState {
   isLoggedIn: boolean;
-  accessToken?: string;
-  email?: string;
+  accessToken: string | null;
+  email: string | null;
 }
 
 const initialState: IAuthState = {
   isLoggedIn: false,
-  accessToken: undefined,
-  email: undefined
+  accessToken: null,
+  email: null
 };
 
 export const authReducer = createReducer(
