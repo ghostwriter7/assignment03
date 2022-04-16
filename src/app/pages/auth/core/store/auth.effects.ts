@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as authActions from './auth.actions';
 import { catchError, from, map, of, switchMap, tap } from 'rxjs';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { app } from '../../../../core/libs/firebase';
+import { signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { auth } from '../../../../core/libs/firebase';
 
 @Injectable()
 export class AuthEffects {
@@ -12,15 +12,25 @@ export class AuthEffects {
   public login$ = createEffect(() => this._actions$.pipe(
     ofType(authActions.login),
     switchMap(({ email, password }) => {
-      return from(signInWithEmailAndPassword(getAuth(app), email, password)).pipe(
+      return from(signInWithEmailAndPassword(auth, email, password)).pipe(
         tap(console.log),
-        map((user) => authActions.loginSuccess({ user })),
+        map((response) => authActions.loginSuccess({
+          accessToken: response.user.accessToken,
+          email: response.user.email } )),
         catchError(() => of(authActions.loginFailure()))
       )
     })
   ));
 
-
+  public logout$ = createEffect(() => this._actions$.pipe(
+    ofType(authActions.logout),
+    switchMap(() => {
+      return from(signOut(auth)).pipe(
+        map(() => authActions.logoutSuccess()),
+        catchError(() => of(authActions.logoutFailure()))
+      )
+    })
+  ));
 
 
 }

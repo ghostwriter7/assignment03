@@ -11,6 +11,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './core/store/app.reducer';
 import { AuthEffects } from './pages/auth/core/store/auth.effects';
+import { MatButtonModule } from '@angular/material/button';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,11 @@ import { AuthEffects } from './pages/auth/core/store/auth.effects';
     MatToolbarModule,
     MatIconModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects])
+    EffectsModule.forRoot([AuthEffects]),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+    }),
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

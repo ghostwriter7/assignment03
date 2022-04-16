@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../core/store/app.reducer';
 import * as fromAuth from '../../pages/auth/core/store/auth.selectors';
+import * as authActions from '../../pages/auth/core/store/auth.actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,4 +19,7 @@ export class NavComponent implements OnInit {
     this.showNav$ = this._store.select(fromAuth.selectAuthState);
   }
 
+  public onLogout(): void {
+    this._store.dispatch(authActions.logout());
+  }
 }
