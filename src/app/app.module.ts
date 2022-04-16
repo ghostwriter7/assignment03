@@ -7,6 +7,9 @@ import { NavComponent } from './ui/nav/nav.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import * as fromApp from './core/store/app.reducer';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,9 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     AppRoutingModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
