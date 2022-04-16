@@ -1,0 +1,15 @@
+.dialog {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+
+  & p {
+    grid-column: 1 / span 2;
+    text-align: center;
+  }
+
+  & > button {
+    grid-row-start: 2;
+    justify-self: center;
+  }
+}
