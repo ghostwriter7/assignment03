@@ -15,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { LoaderComponent } from './ui/loader/loader.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       maxAge: 25,
     }),
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
