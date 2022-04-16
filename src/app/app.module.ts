@@ -13,11 +13,14 @@ import * as fromApp from './core/store/app.reducer';
 import { AuthEffects } from './pages/auth/core/store/auth.effects';
 import { MatButtonModule } from '@angular/material/button';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { LoaderComponent } from './ui/loader/loader.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
-    MatButtonModule
+    MatButtonModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

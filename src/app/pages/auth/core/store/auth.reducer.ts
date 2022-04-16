@@ -1,23 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
-import { login, loginSuccess, loginFailure, logoutSuccess } from './auth.actions';
-import { User } from 'firebase/auth';
+import { login, loginSuccess, loginFailure, logoutSuccess, logout } from './auth.actions';
+import { IUser } from '../interfaces';
 
 export interface IAuthState {
+  isLoading: boolean;
   isLoggedIn: boolean;
-  accessToken: string | null;
-  email: string | null;
+  user: IUser
+
 }
 
 const initialState: IAuthState = {
+  isLoading: false,
   isLoggedIn: false,
-  accessToken: null,
-  email: null
+  user: {
+    accessToken: null,
+    email: null,
+    expirationDate: null
+  }
 };
 
 export const authReducer = createReducer(
   initialState,
-  on(login, state => initialState),
-  on(loginSuccess, (state, { accessToken, email }) => ({ ...state, isLoggedIn: true,  accessToken, email })),
+  on(login, state => ({ ...initialState, isLoading: true })),
+  on(loginSuccess, (state, { accessToken, email, expirationDate }) => ({ ...state, isLoggedIn: true, user: { accessToken, email, expirationDate }, isLoading: false })),
   on(loginFailure, (state) => initialState),
-  on(logoutSuccess, (state) => ({ ...state, isLoggedIn: false, user: undefined }))
+  on(logout, (state) => ({ ...state, isLoading: true })),
+  on(logoutSuccess, (state) => initialState),
+  on(loginFailure, (state) => ({...state, isLoading: false }))
 );
