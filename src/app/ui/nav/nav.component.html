@@ -1,4 +1,4 @@
-<mat-toolbar class="nav">
+<mat-toolbar *ngIf="showNav$ | async" class="nav">
   <div class="nav__brand" routerLinkActive="highlight" routerLink="/schemes/list">
     <mat-icon>code</mat-icon>
     <span>Assignment App</span>
