@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './core/store/app.reducer';
+import { AuthEffects } from './pages/auth/core/store/auth.effects';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import * as fromApp from './core/store/app.reducer';
     MatToolbarModule,
     MatIconModule,
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([])
+    EffectsModule.forRoot([AuthEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]
